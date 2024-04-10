@@ -31,20 +31,31 @@ def checkValidInputFX(testInputNum):
 
 # F(x) to check authorization of vehicle #
 def checkVehicleFX(testInputVehicle):
-  with open("DataFiles/AllowVehicleList.txt", "r") as db:
+  with open("DataFiles/AllowVehicleList", "r") as db:
     vehicleRow = db.read()
     if testInputVehicle in vehicleRow:
      print(f"\n{testInputVehicle} is an authorized vehicle")
     else:
       print(f"{testInputVehicle} is not an authorized vehicle, if you recieved this in error please check the spelling and try again.")
 
-#def processRemovalFX(testRemovalInput):
-  ###remove line here
-    
-   # print(f"{testRemovalInput} has been removed.")
-  #@else:
-    #$print(f"{testRemovalInput} is not found. Please check spelling and please try again.")
-  
+def processRemovalFX(testRemovalInput):
+  ## open the text file as a python file ##
+  with open("DataFiles/AllowVehicleList", "r") as db:
+    contentsList = db.readlines()
+    ## Get rid of new line artifacts ## 
+    formattedContentsList = []
+    for x in contentsList: 
+      formattedContentsList.append(x.strip())
+    ## Removal taking place, or not ##
+    if testRemovalInput in formattedContentsList:
+      formattedContentsList.remove(testRemovalInput)
+      print(f"{testRemovalInput} has been removed.")
+    else:
+      print(f"{testRemovalInput} is not found. Please check spelling and please try again.")
+  ## Overwrite with the created list ##
+  with open("DataFiles/AllowVehicleList", "w") as db:
+    for c in formattedContentsList:
+      db.write(c+ "\n")
     
 
 ## ------------------------------------------------------------ ##
@@ -57,7 +68,7 @@ while activeProgram:
   ## Input = 1 ##
   if processedInput == 1:
     print(TextControlFile.choice1Message)
-    with open("DataFiles/AllowVehicleList.txt", "r") as vehicleList:
+    with open("DataFiles/AllowVehicleList", "r") as vehicleList:
      for a in vehicleList:
        print(f"{a}")
        activeProgram = False
@@ -71,12 +82,13 @@ while activeProgram:
 
   ## Input = 3 ##
   if processedInput == 3:
-    with open("DataFiles/AllowVehicleList.txt", "a") as db:
+    with open("DataFiles/AllowVehicleList", "a") as db:
       print(TextControlFile.choice3Message)
       appendVehicle = input("")
       db.write(appendVehicle)
       db.write("\n")
       print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
+      activeprogram = False
 
   if processedInput == 4:
     print(TextControlFile.choice4Message)
@@ -84,7 +96,7 @@ while activeProgram:
     print(f"Are you sure you want to remove \"{removalInput}\" from the authorized vehicle list?")
     decisionInput = input()
     if decisionInput == "yes" or decisionInput == "Yes":
-      #processRemovalFX(removalInput)
+      processRemovalFX(removalInput)
       print("works")
     else:
       print(f"\"{removalInput}\" has not been removed")
