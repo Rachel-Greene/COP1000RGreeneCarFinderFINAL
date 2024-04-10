@@ -86,8 +86,8 @@ while activeProgram:
     with open("DataFiles/AllowVehicleList", "a") as db:
       print(TextControlFile.choice3Message)
       appendVehicle = input("")
-      db.write(appendVehicle)
       db.write("\n")
+      db.write(appendVehicle)
       print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
       activeprogram = False
 
