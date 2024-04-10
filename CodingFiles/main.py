@@ -54,8 +54,7 @@ def processRemovalFX(testRemovalInput):
     else:
       print(f"{testRemovalInput} is not found. Please check spelling and please try again.")
   ## Overwrite with the created list ##
-  with open("DataFiles/AllowVehicleListNew", "w") as db:
-    print(formattedContentsList)
+  with open("DataFiles/AllowVehicleList", "w") as db:
     for c in formattedContentsList:
       db.write(c+ "\n")
     
@@ -93,7 +92,6 @@ if processedInput == 4:
   decisionInput = input()
   if decisionInput == "yes" or decisionInput == "Yes":
     processRemovalFX(removalInput)
-    print("works")
   else:
     print(f"\"{removalInput}\" has not been removed")
        
