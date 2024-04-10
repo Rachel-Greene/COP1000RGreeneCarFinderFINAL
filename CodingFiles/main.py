@@ -8,7 +8,7 @@ import TextControlFile
 
 ## ------------------------------ Functions ------------------------------ ##
 # F(x) to run and start the program
-def startProgram():
+def startProgramFX():
   print(TextControlFile.welcomeMessage)
   customerChoiceInput = input()
   validChoiceInput = checkValidInputFX(customerChoiceInput)
@@ -37,6 +37,7 @@ def checkVehicleFX(testInputVehicle):
      print(f"\n{testInputVehicle} is an authorized vehicle")
     else:
       print(f"{testInputVehicle} is not an authorized vehicle, if you recieved this in error please check the spelling and try again.")
+      startProgramFX()
 
 def processRemovalFX(testRemovalInput):
   ## open the text file as a python file ##
@@ -61,21 +62,21 @@ def processRemovalFX(testRemovalInput):
 
 ## ------------------------------------------------------------ ##
 ## --------- Run Program, take inputs and process  ------------ ##
-processedInput = startProgram()
-  ## Input = 1 ##
+processedInput = startProgramFX()
+  ## Input = 1 ## ## PRINT ##
 if processedInput == 1:
   print(TextControlFile.choice1Message)
   with open("DataFiles/AllowVehicleList", "r") as vehicleList:
     for a in vehicleList:
        print(f"{a}")
 
-  ## Input = 2 ##
+  ## Input = 2 ## ## SEARCH ##
 if processedInput == 2:
   print(TextControlFile.choice2Message)
   customerVehicleInput = input()
   validVehicleInput = checkVehicleFX(customerVehicleInput)
 
-  ## Input = 3 ##
+  ## Input = 3 ## ## ADD ##
 if processedInput == 3:
   with open("DataFiles/AllowVehicleList", "a") as db:
     print(TextControlFile.choice3Message)
@@ -84,7 +85,7 @@ if processedInput == 3:
     db.write(appendVehicle)
     print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
 
-  ## Input = 4 ##
+  ## Input = 4 ## ## DELETE ##
 if processedInput == 4:
   print(TextControlFile.choice4Message)
   removalInput = input()
@@ -96,12 +97,12 @@ if processedInput == 4:
   else:
     print(f"\"{removalInput}\" has not been removed")
        
-  ## Input = 5 ##
+  ## Input = 5 ## ## EXIT ##
 if processedInput == 5:
   print(TextControlFile.thankYouMessage)
   exit()
 
-  ## Input = 99, error ##
+  ## Input = 99 ## ## ERROR ##
 if processedInput == 99:
   print(TextControlFile.errorMessage)
-  startProgram()
+  startProgramFX()
