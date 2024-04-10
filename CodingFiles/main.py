@@ -88,9 +88,9 @@ while activeProgram:
       appendVehicle = input("")
       db.write("\n")
       db.write(appendVehicle)
-      print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
-      activeprogram = False
-
+    print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
+    activeprogram = False
+  ## Input = 4 ##
   if processedInput == 4:
     print(TextControlFile.choice4Message)
     removalInput = input()
@@ -102,7 +102,7 @@ while activeProgram:
     else:
       print(f"\"{removalInput}\" has not been removed")
        
-  ## Input = 4 ##
+  ## Input = 5 ##
   if processedInput == 5:
     print(TextControlFile.thankYouMessage)
     activeProgram = False
