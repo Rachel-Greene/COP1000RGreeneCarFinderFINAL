@@ -53,7 +53,8 @@ def processRemovalFX(testRemovalInput):
     else:
       print(f"{testRemovalInput} is not found. Please check spelling and please try again.")
   ## Overwrite with the created list ##
-  with open("DataFiles/AllowVehicleList", "w") as db:
+  with open("DataFiles/AllowVehicleListNew", "w") as db:
+    print(formattedContentsList)
     for c in formattedContentsList:
       db.write(c+ "\n")
     
