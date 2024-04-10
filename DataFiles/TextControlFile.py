@@ -2,14 +2,15 @@
 
 welcomeMessage = """
   ********************************
-  AutoCountry Vehicle Finder v0.3
+  AutoCountry Vehicle Finder v0.4
   ********************************
   Please enter the following number from the following menu:
    \n
     1. PRINT all Authorized Vehicles
     2. SEARCH for Authorized Vehicle
     3. ADD Authorized Vehicle
-    4. Exit
+    4. DELETE Authorized Vehicles
+    5. Exit
 """
 choice1Message = """
   ***********************************
@@ -20,13 +21,16 @@ choice2Message = """
   Please enter the full vehicle name:
   ***********************************
 """
-authorizedVehicle = "is an authorized vehicle"
-
-unauthorizedVehicle = "is not an authorized vehicle, if you recieved this in error please check the spelling and try again."
 
 choice3Message = """ 
   ********************************
-  Please enter the full vehicle name you would like to add:
+  Please enter the full vehicle name you would like to ADD:
+  *******************************
+"""
+
+choice4Message = """
+  ********************************
+  Please enter the full vehicle name you would like to REMOVE:
   *******************************
 """
 
@@ -36,4 +40,3 @@ errorMessage = """
   Sorry, you have entered an invalid input.
   Please try again with the correct input from the provided list.
 """
-
