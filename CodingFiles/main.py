@@ -111,7 +111,6 @@ def controlFlowFX(processedInput):
     ## Input = 99 ## ## ERROR ##
   if processedInput == 99:
     event99ProcessFX()
-  
 
 ## --------- Run Program, take inputs and process  ------------ ##
 processedInput = startProgramFX()
