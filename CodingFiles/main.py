@@ -63,11 +63,34 @@ def event1ProcessFX():
   print(TextControlFile.choice1Message)
   with open("DataFiles/AllowVehicleList", "r") as vehicleList:
     for a in vehicleList:
-       print(f"{a}")
+       print(f"{a}") # Print #
 def event2ProcessFX():
   print(TextControlFile.choice2Message)
   customerVehicleInput = input()
-  validVehicleInput = checkVehicleFX(customerVehicleInput)
+  validVehicleInput = checkVehicleFX(customerVehicleInput) # Search #
+def event3ProcessFX():
+  with open("DataFiles/AllowVehicleList", "a") as db:
+    print(TextControlFile.choice3Message)
+    appendVehicle = input("")
+    db.write("\n")
+    db.write(appendVehicle)
+    print (f"\n You have added {appendVehicle} as an authorized vehicle. \n") # Add #
+def event4ProcessFX():
+  print(TextControlFile.choice4Message)
+  removalInput = input()
+  print(f"Are you sure you want to remove \"{removalInput}\" from the authorized vehicle list?")
+  decisionInput = input()
+  if decisionInput == "yes" or decisionInput == "Yes":
+    processRemovalFX(removalInput)
+  else:
+    print(f"\"{removalInput}\" has not been removed") # Delete #
+def event5ProcessFX():
+  print(TextControlFile.thankYouMessage)
+  exit() # Exit #
+def event99ProcessFX():
+  print(TextControlFile.errorMessage)
+  startProgramFX() # Error #
+  
   
 
 ## ------------------------------------------------------------ ##
@@ -79,37 +102,20 @@ if processedInput == 1:
   
   ## Input = 2 ## ## SEARCH ##
 if processedInput == 2:
-
+  event2ProcessFX()
   
-
   ## Input = 3 ## ## ADD ##
 if processedInput == 3:
-  with open("DataFiles/AllowVehicleList", "a") as db:
-    print(TextControlFile.choice3Message)
-    appendVehicle = input("")
-    db.write("\n")
-    db.write(appendVehicle)
-    print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
+  event3ProcessFX()
     
-
   ## Input = 4 ## ## DELETE ##
 if processedInput == 4:
-  print(TextControlFile.choice4Message)
-  removalInput = input()
-  print(f"Are you sure you want to remove \"{removalInput}\" from the authorized vehicle list?")
-  decisionInput = input()
-  if decisionInput == "yes" or decisionInput == "Yes":
-    processRemovalFX(removalInput)
-  else:
-    print(f"\"{removalInput}\" has not been removed")
+  event4ProcessFX()
     
-       
   ## Input = 5 ## ## EXIT ##
 if processedInput == 5:
-  print(TextControlFile.thankYouMessage)
-  exit()
+  event5ProcessFX()
 
   ## Input = 99 ## ## ERROR ##
 if processedInput == 99:
-  print(TextControlFile.errorMessage)
-  startProgramFX()
+  event99ProcessFX()
