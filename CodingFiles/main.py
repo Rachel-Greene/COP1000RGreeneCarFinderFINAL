@@ -57,23 +57,30 @@ def processRemovalFX(testRemovalInput):
   with open("DataFiles/AllowVehicleList", "w") as db:
     for c in formattedContentsList:
       db.write(c+ "\n")
-    
+
+# F(x) for individual events #
+def event1ProcessFX():
+  print(TextControlFile.choice1Message)
+  with open("DataFiles/AllowVehicleList", "r") as vehicleList:
+    for a in vehicleList:
+       print(f"{a}")
+def event2ProcessFX():
+  print(TextControlFile.choice2Message)
+  customerVehicleInput = input()
+  validVehicleInput = checkVehicleFX(customerVehicleInput)
+  
 
 ## ------------------------------------------------------------ ##
 ## --------- Run Program, take inputs and process  ------------ ##
 processedInput = startProgramFX()
   ## Input = 1 ## ## PRINT ##
 if processedInput == 1:
-  print(TextControlFile.choice1Message)
-  with open("DataFiles/AllowVehicleList", "r") as vehicleList:
-    for a in vehicleList:
-       print(f"{a}")
-
+  event1ProcessFX()
+  
   ## Input = 2 ## ## SEARCH ##
 if processedInput == 2:
-  print(TextControlFile.choice2Message)
-  customerVehicleInput = input()
-  validVehicleInput = checkVehicleFX(customerVehicleInput)
+
+  
 
   ## Input = 3 ## ## ADD ##
 if processedInput == 3:
@@ -83,6 +90,7 @@ if processedInput == 3:
     db.write("\n")
     db.write(appendVehicle)
     print (f"\n You have added {appendVehicle} as an authorized vehicle. \n")
+    
 
   ## Input = 4 ## ## DELETE ##
 if processedInput == 4:
@@ -94,6 +102,7 @@ if processedInput == 4:
     processRemovalFX(removalInput)
   else:
     print(f"\"{removalInput}\" has not been removed")
+    
        
   ## Input = 5 ## ## EXIT ##
 if processedInput == 5:
