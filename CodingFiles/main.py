@@ -90,32 +90,29 @@ def event5ProcessFX():
 def event99ProcessFX():
   print(TextControlFile.errorMessage)
   startProgramFX() # Error #
-  
+
+# F(x) to perform flow of actions for the user #
+def controlFlowFX(processedInput):
+    ## Input = 1 ## ## PRINT ##
+  if processedInput == 1:
+    event1ProcessFX()
+    ## Input = 2 ## ## SEARCH ##
+  if processedInput == 2:
+    event2ProcessFX()
+    ## Input = 3 ## ## ADD ##
+  if processedInput == 3:
+    event3ProcessFX()
+    ## Input = 4 ## ## DELETE ##
+  if processedInput == 4:
+    event4ProcessFX()
+    ## Input = 5 ## ## EXIT ##
+  if processedInput == 5:
+    event5ProcessFX()
+    ## Input = 99 ## ## ERROR ##
+  if processedInput == 99:
+    event99ProcessFX()
   
 
-## ------------------------------------------------------------ ##
 ## --------- Run Program, take inputs and process  ------------ ##
 processedInput = startProgramFX()
-  ## Input = 1 ## ## PRINT ##
-if processedInput == 1:
-  event1ProcessFX()
-  
-  ## Input = 2 ## ## SEARCH ##
-if processedInput == 2:
-  event2ProcessFX()
-  
-  ## Input = 3 ## ## ADD ##
-if processedInput == 3:
-  event3ProcessFX()
-    
-  ## Input = 4 ## ## DELETE ##
-if processedInput == 4:
-  event4ProcessFX()
-    
-  ## Input = 5 ## ## EXIT ##
-if processedInput == 5:
-  event5ProcessFX()
-
-  ## Input = 99 ## ## ERROR ##
-if processedInput == 99:
-  event99ProcessFX()
+controlFlowFX(processedInput)
