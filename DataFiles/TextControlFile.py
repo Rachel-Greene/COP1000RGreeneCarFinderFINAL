@@ -2,7 +2,7 @@
 
 welcomeMessage = """
   ********************************
-  AutoCountry Vehicle Finder v0.4
+  AutoCountry Vehicle Finder v0.6
   ********************************
   Please enter the following number from the following menu:
    \n
